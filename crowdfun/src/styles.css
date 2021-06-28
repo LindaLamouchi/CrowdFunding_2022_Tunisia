@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.titl{
+    margin: 0.5% 0.5% 0.5% 0.5%;
+}
+
+.r0{
+    height: fit-content;
+    background-color: teal;
+    color: white;
+}
+.r000{
+    margin-top: 5%;
+}
+.c2{
+    width: 40%;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+.lab{
+    font-size: x-large;
+    color: teal;
+    font-weight: bold;
+    padding:5%;
+}
+.form-group{
+    padding-left:5%;
+}
+

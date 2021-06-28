@@ -1,0 +1,17 @@
+.r0{
+    height: fit-content;
+    background-color: teal;
+    color: white;
+}
+.r1{
+    background-color: rgba(0, 128, 128, 0.041);
+    width: 100%;
+    height: 30%;
+    font-size: xx-large;
+    font-style: inherit;
+}
+.table{
+    width: 80%;
+    margin: 5% 10% 5%;
+    
+}
