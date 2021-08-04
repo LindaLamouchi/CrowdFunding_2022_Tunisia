@@ -1,0 +1,25 @@
+.bg-danger {
+    background-color: #242423!important;
+}
+.nav-item {
+    padding-left: 0.57rem;
+}
+.searchbar {
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #444;
+    border: none;
+    border-radius: 100px;
+    background-color: #fff;
+    /* padding: 5px 16px; */
+    margin-left: 70%;
+   
+    /* height: 50%; */
+    -webkit-appearance: none;
+  }
+  .logo{
+      margin-top: 0.7%;
+      margin-right: 0.68%;
+  }

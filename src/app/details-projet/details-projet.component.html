@@ -1,0 +1,39 @@
+<h1 class="lab"> {{project.id}}. {{project.titre}}</h1>
+<div class="row a0">
+    <div class="column">  
+        <h5>Détails du projet</h5>
+     Etat du projet : [[{{project.etat}}]] <br/>
+     Contexte du projet :   {{project.contexte}}<br/>
+       
+     <img src="..//..//assets//images//imm.png" style="width: 30%; height: 100%;" />
+    <br/>
+        Budget But : {{project.budget_But}} <br/>
+        Budget Collecté : {{project.budget_collecte}} <br>
+        Categorie du projet :  {{project.domaine.libelle}} <br/>
+    </div>
+   
+    <div class="column">
+        <h5>Bénificiaire</h5>
+       Nom: {{project.responsable.username}}
+        <br/>       Email : {{project.responsable.email}}
+        <button class="btn btn-primary ">Contacter</button>
+        <div class="container mt-5">
+            <h2>Faire un Don</h2>
+            <div class="row mt-5">
+              <div class="col-md-4">
+                <button (click)="pay(20)" class="btn btn-primary btn-block">Pay 20dt</button>
+              </div>
+              <div class="col-md-4">
+                <button (click)="pay(30)" class="btn btn-success btn-block">Pay 30dt</button>
+              </div>
+              <div class="col-md-4">
+                <button (click)="pay(50)" class="btn btn-info btn-block">Pay 50dt</button>
+              </div>    
+            </div>
+            <p class="mt-5">
+             Nous garantissons la sécurité des transactions par notre systeme fiable et bien reconnu!<br/>
+             N'hesitez pas à nous contacter pour plus d'information!    
+            </p>
+          </div>
+    </div>
+</div>

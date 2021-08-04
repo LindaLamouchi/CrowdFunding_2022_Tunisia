@@ -1,0 +1,170 @@
+<div class="row">
+<div class="column c2">
+  <label class="lab" #list>Mes projets</label>
+  <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="size"></ngb-pagination>
+
+  <div class="row" *ngIf="projects" >
+    
+    <div class="column v1" *ngFor="let project of projects | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"><div class="card"  style="width: 18rem;" >
+      
+      <i class="fa fa-trash-o" 
+      (click)="deleteProject(project.id)"
+      style="font-size:30px;color:red;margin-left: 85%;margin-top: 2%;"></i>
+      <img mat-card-image src="..//..//assets/images/im.png" class="card-img-top" alt="Projet">
+      <div class="card-body">
+        <h5 class="card-title">{{project.id}}:{{project.titre}} </h5> <p class="p1"> ([Etat]:{{project.etat}})</p>
+        <p class="card-text">{{project.contexte}}</p>
+        <button  type="button" class="btn btn-warning"  (click)='DetailsProject(project.id)'>Consulter plus de details</button>
+      </div>
+    </div>  
+    </div>
+
+
+  </div>
+ 
+ </div>
+
+ <div class="column">
+   <div class="btn-grp" style="width: fit-content;">
+    <ul class="list-group list-group-flush">
+     <button class="list-group-item" routerLink="../profile">Mon profile</button>
+     <button class="list-group-item"  (click)="scroll(don)">Mes donations</button>
+     <button class="list-group-item" (click)="addEvent();" [ngStyle]="{'background-color': buttonColor,'color':color}" (click)="toggleShow()" > Mes projets</button>
+     <a *ngIf="isShown"  class="dropdown-item"    (click)="scroll(projet)">Nouveau Prjt.</a>
+     <a *ngIf="isShown" class="dropdown-item"  (click)="scroll(list)">Consulter List</a>
+
+    </ul>
+  
+   </div>
+
+ </div>
+</div>
+
+<div class="r02">
+  <img mat-card-image src="..//..//assets/images/donation.jpg" class="card-img-top" alt="Projet">
+<label class="lab">Actions Effectuées</label>
+</div>
+<div class="row r3">
+ <div class="column lab " style="width: 30%;" #don>
+   Mes dons
+ </div> 
+  <div class="column" style="width: 60%; margin-left: 15%;">
+    <table class="table table-hover table-bordered table-warning"  >
+      <thead class="thead-light">Liste des contrats enregistrés
+    </thead>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Date Creation</th>
+          <th>Montant</th>
+          <th>Id_Projet</th>
+            <ngb-pagination class="d-flex justify-content-end" [(page)]="pagee" [pageSize]="pageSizee" [collectionSize]="sizee"></ngb-pagination>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let contrat of Contrats | slice: (pagee-1) * pageSizee : (pagee-1) * pageSizee + pageSizee">
+          <td>{{contrat.id}}</td>
+          <td>{{contrat.dateCreation}}</td>
+          <td>{{contrat.montant}}</td>
+          <td>{{contrat.projet.id}}</td>
+        </tr>
+     
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="r4" #projet>
+  <label class="lab">Nouveau projet</label>
+  <div class="container">
+    <div >
+      <div class="card card-container" >
+       
+        <form
+          
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+        >
+        <label> <h5>Remplir ce formulaire</h5></label>
+          <div class="form-group">
+            <label for="titre">Titre</label>
+            <input
+              type="text"
+              class="form-control"
+              name="titre"
+              [(ngModel)]="form.titre"
+              required
+              minlength="4"
+              maxlength="30"
+              #titre="ngModel"
+            />
+            <div class="alert-danger" *ngIf="f.submitted && titre.invalid">
+              <div *ngIf="titre.errors.required">Veuillez entrer le titre!</div>
+              <div *ngIf="titre.errors.minlength">
+              Titre doit etre au moins 4 caracteres
+              </div>
+              <div *ngIf="titre.errors.maxlength">
+                Titre doit etre au plus 30 caracteres
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contexte">Contexte</label>
+            <input
+              type="text"
+              class="form-control"
+              name="contexte"
+              [(ngModel)]="form.contexte"
+              required
+              minlength="15"
+             
+              #contexte="ngModel"
+            />
+            <div class="alert-danger" *ngIf="f.submitted && contexte.invalid">
+              <div *ngIf="contexte.errors.required">Veuillez entrer le contexte!</div>
+              <div *ngIf="contexte.errors.minlength">
+              Titre doit etre au moins 15 caracteres
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="budget_but">Budget But</label>
+            <input
+              type="number"
+              class="form-control"
+              name="budget_but"
+              [(ngModel)]="form.budget_but"
+              required
+              #budget_but="ngModel"
+            />
+            <div class="alert-danger" *ngIf="f.submitted && budget_but.invalid">
+              <div *ngIf="budget_but.errors.required">Budget but est requis!</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <select class="form-select" 
+             type="text" (change)="selectChangeHandler($event)"
+            aria-label="size 3 select example">
+              <option selected>Choisir domaine</option>
+              <option *ngFor='let d of domaines' class="font-weight-normal" value="{{d.domaineId}}">{{d.domaineId}} {{d.libelle}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block">Enregistrer</button>
+          </div>
+    
+          <div class="alert alert-warning" *ngIf="f.submitted">
+            Enregistrement echoué!<br />{{ errorMessage }}
+          </div>
+          
+        </form>
+    
+      
+      </div>
+    </div>
+  </div>
+    
+</div>

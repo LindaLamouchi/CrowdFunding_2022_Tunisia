@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "worldcupFront": {
+    "crowdfun": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/worldcupFront",
+            "outputPath": "dist/crowdfun",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -62,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "worldcupFront:build"
+            "browserTarget": "crowdfun:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "worldcupFront:build:production"
+              "browserTarget": "crowdfunt:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "worldcupFront:build"
+            "browserTarget": "crowdfun:build"
           }
         },
         "test": {
@@ -110,15 +111,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "worldcupFront:serve"
+            "devServerTarget": "crowdfun:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "worldcupFront:serve:production"
+              "devServerTarget": "crowdfun:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "worldcupFront"
+    }
+  },
+  "defaultProject": "crowdfun"
 }

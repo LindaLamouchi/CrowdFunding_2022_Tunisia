@@ -1,0 +1,51 @@
+
+<div class="btn-grp" style="width: fit-content;">
+  <ul class="list-group list-group-flush">
+  <button class="list-group-item" (click)="scroll(contact)">Contact</button>
+   <button class="list-group-item"  (click)="scroll(target)">A propos</button>
+   <button class="list-group-item" (click)="scroll(h)">Haut</button>
+  </ul>
+ </div>
+<div class="row n1" #h>
+  
+      <label class="lab"> Projets</label>
+      <p style="margin-left: 2%;"> Authentifiez-vous et consulter la liste des projets complete</p>
+      
+      <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="size"></ngb-pagination>
+    
+      <div class="row v1" *ngIf="projects">
+        
+        <div *ngFor="let project of projects | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"><div class="card"  style="width: 18rem;" >
+          <img mat-card-image src="..//..//assets/images/im.png" class="card-img-top" alt="Projet">
+          <div class="card-body">
+            <h5 class="card-title">{{project.id}}:{{project.titre}} </h5> <p class="p1"> ([Etat]:{{project.etat}})</p>
+            <p class="card-text">{{project.contexte}}</p>
+            <a (click)='DetailsProject(project.id)' class="btn btn-primary">Consulter plus de details</a>
+          </div>
+        </div>  
+     
+    
+      </div>
+     
+   
+    
+     
+    </div>
+ </div>
+
+ <div class="r0 xl" #contact>
+  <i class="material-icons widget" style="font-size:48px;color:rgb(238, 223, 223)">email</i>  
+  <i class="material-icons widget" style="font-size:48px;color:rgb(238, 223, 223)">call</i>  
+  <i class="material-icons widget" style="font-size:48px;color:rgb(238, 223, 223)">bubble_chart</i>  
+ </div>
+
+
+    <div class="row n1" #target>
+      <div class="column r1">
+        TTA-Technology Trusted Advisors est une société de technologies de l'information spécialisée dans la mise en œuvre 
+        et le support de systèmes informatiques et le développement de logiciels.
+      </div>
+    <div class="column r1">
+       <img mat-card-image src="../../assets/images/crowws.jpg" alt="Pic of crowdfunding">
+     </div>
+</div>

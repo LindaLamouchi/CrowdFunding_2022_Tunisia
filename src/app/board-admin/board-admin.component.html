@@ -1,0 +1,77 @@
+<div class="r0">
+  
+<i class="material-icons" style="padding: 0.3% ;font-size:16px">widgets</i>  
+  Admin Dash.
+</div>
+<!------------------------------------------------------------------->
+
+<div class="r1">
+ <h1 class="titl">Communauté</h1> 
+</div>
+<!---------------------------------------------------------------------->
+<label class="st">Utilisateurs-Controle</label>
+<div>
+  <table class="table table-hover" *ngIf="users" max-width='fit-content'>
+    <thead class=" thead-dark">
+      <tr>
+        <th>Username</th>
+        
+        <th>Email</th>
+        <th>Controle</th>
+          <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="size"></ngb-pagination>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let user of users | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>controle</td>
+      </tr>
+   
+    </tbody>
+  </table>
+</div>
+<!---->
+<label class="st">Domaine-Controle</label>
+<div class="row">
+ 
+  <div class="column">
+    <div>
+     <h5>Domaines
+     </h5>
+      <table class="table table-hover"  max-width='fit-content'>
+        
+        <thead class="thead-dark">
+          <tr>
+            <th>libelle</th>
+            <th>      <ngb-pagination class="d-flex justify-content-end" [(page)]="pagee" [pageSize]="pageSizee" [collectionSize]="sizee"></ngb-pagination>
+            </th>
+          </tr>
+          
+        </thead>
+        <tbody>
+          <tr  *ngFor="let dom of domaines  | slice: (pagee-1) * pageSizee : (pagee-1) * pageSizee + pageSizee">
+            <td>{{dom.libelle}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="column">
+    <h5>Nouveau Domaine</h5>
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        name="libelle"
+        [(ngModel)]="libelle"
+        required
+        placeholder="Nom du Domaine"
+      />
+     <button (click)='addDom()' class="button btn-primary" style="margin-top: 2%;">Ajouter</button>
+    </div>
+  </div>
+</div>
